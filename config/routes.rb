@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :repairshops
-  resources :street_addresses
+ 
+  
+  resources :comments
   namespace :api do
     namespace :v1 do
       resources :users
+      resources :repairshops
     end
   end
 

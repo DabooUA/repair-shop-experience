@@ -1,4 +1,4 @@
-class RepairshopsController < ApplicationController
+class Api::V1::RepairshopsController < ApplicationController
   before_action :set_repairshop, only: [:show, :update, :destroy]
 
   # GET /repairshops
@@ -46,6 +46,6 @@ class RepairshopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def repairshop_params
-      params.require(:repairshop).permit(:street_address, :city, :state, :zip_code)
+      params.require(:repairshop).permit(:repair_shop_name, :street_address, :city, :state, :zip_code)
     end
 end
