@@ -1,0 +1,2 @@
+class Repairshop < ApplicationRecord
+end
