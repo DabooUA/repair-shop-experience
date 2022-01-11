@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
-  # protect_from_forgery with: :exception
-  # before_action :verified_user
-  # helper_method :current_user
- 
+   
     def logged_in?
       !!current_user
     end
