@@ -5,14 +5,13 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
 
-    # user_json = UserSerializer.new(@users).serialized_json
-    render @users
+    render json: @users
   end
 
   # GET /users/1
   def show
     # render json: @user
-    #json_string = MovieSerializer.new(movie).serialized_json
+  
     show_user_json = UserSerializer.new(@user).serialized_json
     render json: show_user_json
   end
@@ -20,9 +19,9 @@ class Api::V1::UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+    @comment = Comment.find_or_create_by(comment: params[:user][:repairshop][:comment])
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
