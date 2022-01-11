@@ -21,9 +21,13 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
     @comment = Comment.find_or_create_by(comment: params[:user][:repairshop][:comment])
     if @user.save
-      render json: @user, status: :created
+      session[:user_id] = @user.id
+      render json: UserSerializer.new(@user), status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      resp = {
+        error: @user.errors.full_messages.to_sentence
+      }
+      render json: resp, status: :unprocessable_entity
     end
   end
 
