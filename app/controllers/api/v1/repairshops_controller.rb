@@ -3,9 +3,13 @@ class Api::V1::RepairshopsController < ApplicationController
 
   # GET /repairshops
   def index
-    @repairshops = Repairshop.all
-
-    render json: @repairshops
+    if logged_in?
+      @repairshops = current_user.repairshop
+      render json: @repairshops
+    else
+      render json: {
+        error: "You must be logged in to see the repairshops experience reviews."
+      }
   end
 
   # GET /repairshops/1
