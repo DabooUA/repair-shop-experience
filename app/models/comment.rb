@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  has_many :users, through: :repairshop
+  belongs_to :repairshop
 end
