@@ -12,8 +12,8 @@ class Api::V1::UsersController < ApplicationController
   def show
     # render json: @user
   
-    show_user_json = UserSerializer.new(@user).serialized_json
-    render json: show_user_json
+    user_json = UserSerializer.new(@user).serialized_json
+    render json: user_json
   end
 
   # POST /users
@@ -53,6 +53,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :username, :password_digest)
+      params.require(:user).permit(:name, :username, :password)
     end
 end

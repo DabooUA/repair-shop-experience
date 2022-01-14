@@ -9,7 +9,6 @@ Rails.application.routes.draw do
       resources :users
       resources :repairshops
       resources :comments
-      resources :sessions
     end
   end
 
