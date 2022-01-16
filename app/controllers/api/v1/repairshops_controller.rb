@@ -4,12 +4,13 @@ class Api::V1::RepairshopsController < ApplicationController
   # GET /repairshops
   def index
     if logged_in?
-      @repairshops = current_user.repairshop
-      render json: @repairshops
+      @repairshops = current_user.repairshops
+      render json: RepairshopSerializer.new(@repairshops)
     else
       render json: {
         error: "You must be logged in to see the repairshops experience reviews."
       }
+    end
   end
 
   # GET /repairshops/1
@@ -52,4 +53,5 @@ class Api::V1::RepairshopsController < ApplicationController
     def repairshop_params
       params.require(:repairshop).permit(:repair_shop_name, :street_address, :city, :state, :zip_code)
     end
+  
 end

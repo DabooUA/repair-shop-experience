@@ -1,4 +1,4 @@
 class RepairshopSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :street, :city, :state, :zip_code
+  attributes :repair_shop_name, :street_address, :city, :state, :zip_code
 end
