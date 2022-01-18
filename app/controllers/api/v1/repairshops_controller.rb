@@ -3,14 +3,18 @@ class Api::V1::RepairshopsController < ApplicationController
 
   # GET /repairshops
   def index
-    if logged_in?
-      @repairshops = current_user.repairshops
-      render json: RepairshopSerializer.new(@repairshops)
-    else
-      render json: {
-        error: "You must be logged in to see the repairshops experience reviews."
-      }
-    end
+    # if logged_in?
+    #   @repairshops = current_user.repairshops
+    @repairshops = Repairshop.all
+
+    render json: @repairshops
+
+    # render json: RepairshopSerializer.new(@repairshops)
+    # else
+    #   render json: {
+    #     error: "You must be logged in to see the repairshops experience reviews."
+    #   }
+    # end
   end
 
   # GET /repairshops/1
