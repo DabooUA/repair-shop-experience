@@ -7,7 +7,7 @@ class Api::V1::RepairshopsController < ApplicationController
     #   @repairshops = current_user.repairshops
     @repairshops = Repairshop.all
 
-    render json: @repairshops
+    render json: RepairshopSerializer.new(@repairshops)
 
     # render json: RepairshopSerializer.new(@repairshops)
     # else
